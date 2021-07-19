@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.3/)
 
 ## Table of Contents
-  1. [Introduction](#introduction)
+  1. [Introdução](#introducao)
   2. [Variables](#variables)
   3. [Functions](#functions)
   4. [Objects and Data Structures](#objects-and-data-structures)
@@ -16,25 +16,22 @@
      5. [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
   6. [Don't repeat yourself (DRY)](#dont-repeat-yourself-dry)
 
-## Introduction
+## Introdução
 
-Software engineering principles, from Robert C. Martin's book
+Principios da engenharia de software, do livro de Robert C. Martin
 [*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for Python. This is not a style guide. It's a guide to producing
-readable, reusable, and refactorable software in Python.
+adaptados para Python. Isto não é um style guide. É um guia para desenvolver software legível, reutilizavel e refatorável em Python.
 
-Not every principle herein has to be strictly followed, and even fewer will be universally
-agreed upon. These are guidelines and nothing more, but they are ones codified over many
-years of collective experience by the authors of *Clean Code*.
+Nem todos principios contidos aqui tem de ser seguidos estritamente, e muito menos irão ser universalmente aprovados. Estes são apenas guias e nada mais, mas que foram codificados durante muito anos por experiências coletivas dos autores de *Código Limpo*.
 
-Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
+Inspriado em [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
 
 Targets Python3.7+
 
-## **Variables**
-### Use meaningful and pronounceable variable names
+## **Variáveis**
+### Use nomes significantes e pronunciáveis em suas variáveis
 
-**Bad:**
+**Ruim:**
 ```python
 import datetime
 
@@ -42,7 +39,7 @@ import datetime
 ymdstr = datetime.date.today().strftime("%y-%m-%d")
 ```
 
-**Good**:
+**Bom**:
 ```python
 import datetime
 
@@ -51,27 +48,26 @@ current_date: str = datetime.date.today().strftime("%y-%m-%d")
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
+### Use o mesmo vocabulário para o mesmo tipo de variável
 
-**Bad:**
-Here we use three different names for the same underlying entity:
+**Ruim:**
+Usamos três nomes diferentes para a mesma entidade:
 ```python
 def get_user_info(): pass
 def get_client_data(): pass
 def get_customer_record(): pass
 ```
 
-**Good**:
-If the entity is the same, you should be consistent in referring to it in your functions:
+**Bom**:
+Se a entidade for a mesma, você deve ser consistente ao se referir a ela em suas funções:
 ```python
 def get_user_info(): pass
 def get_user_data(): pass
 def get_user_record(): pass
 ```
 
-**Even better**
-Python is (also) an object oriented programming language. If it makes sense, package the functions together with the concrete implementation
-of the entity in your code, as instance attributes, property methods, or methods:
+**Melhor ainda**
+Python é (também) uma linguagem de programação orientada a objetos. Se fizer sentido, empacote as funções junto com a implementação concreta da entidade em seu código, como atributos de instância, métodos ou métodos de propriedade:
 
 ```python
 from typing import Union, Dict, Text
@@ -94,27 +90,25 @@ class User:
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use searchable names
-We will read more code than we will ever write. It's important that the code we do write is
-readable and searchable. By *not* naming variables that end up being meaningful for
-understanding our program, we hurt our readers.
-Make your names searchable.
+### Use nomes fáceis de pesquisar
+Nós vamos ler mais código do que escrever, por isso é importante que o código que escrevemos seja legível e fácil de achar. Ao *não* nomear variáveis que acabam sendo inúteis para entender nosso programa, prejudicamos nossos leitores.
+Torne seus nomes fáceis de achar
 
-**Bad:**
+**Ruim:**
 ```python
 import time
 
 
-# What is the number 86400 for again?
+# Para que é o número 86400 de novo?
 time.sleep(86400)
 ```
 
-**Good**:
+**Bom**:
 ```python
 import time
 
 
-# Declare them in the global namespace for the module.
+# Declare-os no namespace global do módulo.
 SECONDS_IN_A_DAY = 60 * 60 * 24
 time.sleep(SECONDS_IN_A_DAY)
 ```
