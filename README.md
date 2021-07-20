@@ -19,14 +19,14 @@
 ## Introdução
 
 Principios da engenharia de software, do livro de Robert C. Martin
-[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
+[*Código Limpo*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
 adaptados para Python. Isto não é um style guide. É um guia para desenvolver software legível, reutilizavel e refatorável em Python.
 
 Nem todos principios contidos aqui tem de ser seguidos estritamente, e muito menos irão ser universalmente aprovados. Estes são apenas guias e nada mais, mas que foram codificados durante muito anos por experiências coletivas dos autores de *Código Limpo*.
 
 Inspriado em [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
 
-Targets Python3.7+
+Versão Python3.7+
 
 ## **Variáveis**
 ### Use nomes significantes e pronunciáveis em suas variáveis
@@ -66,7 +66,7 @@ def get_user_data(): pass
 def get_user_record(): pass
 ```
 
-**Melhor ainda**
+**Melhor ainda**:
 Python é (também) uma linguagem de programação orientada a objetos. Se fizer sentido, empacote as funções junto com a implementação concreta da entidade em seu código, como atributos de instância, métodos ou métodos de propriedade:
 
 ```python
@@ -91,7 +91,7 @@ class User:
 **[⬆ back to top](#table-of-contents)**
 
 ### Use nomes fáceis de pesquisar
-Nós vamos ler mais código do que escrever, por isso é importante que o código que escrevemos seja legível e fácil de achar. Ao *não* nomear variáveis que acabam sendo inúteis para entender nosso programa, prejudicamos nossos leitores.
+Nós vamos ler mais código do que escrever, por isso é importante que o código que escrevemos seja legível e fácil de achar. Ao *não* nomear variáveis, prejudicamos nossos leitores.
 Torne seus nomes fáceis de achar
 
 **Ruim:**
@@ -99,7 +99,7 @@ Torne seus nomes fáceis de achar
 import time
 
 
-# Para que é o número 86400 de novo?
+# Para que é o número 86400?
 time.sleep(86400)
 ```
 
@@ -114,8 +114,8 @@ time.sleep(SECONDS_IN_A_DAY)
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Use explanatory variables
-**Bad:**
+### Use variáveis explicativas
+**Ruim:**
 ```python
 import re
 
@@ -128,9 +128,9 @@ if matches:
     print(f"{matches[1]}: {matches[2]}")
 ```
 
-**Not bad**:
+**Nada mal**:
 
-It's better, but we are still heavily dependent on regex.
+É melhor, mas ainda dependemos muito do regex.
 
 ```python
 import re
@@ -145,9 +145,9 @@ if matches:
     print(f"{city}: {zip_code}")
 ```
 
-**Good**:
+**Bom**:
 
-Decrease dependence on regex by naming subpatterns.
+Diminua a dependência de regex nomeando as variáveis em subgrupo
 ```python
 import re
 
@@ -161,11 +161,11 @@ if matches:
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Avoid Mental Mapping
-Don’t force the reader of your code to translate what the variable means.
-Explicit is better than implicit.
+### Evite mapear mentalmente
+Não force o leitor do seu código a traduzir o que a variável significa.
+Explicito é melhor que implito.
 
-**Bad:**
+**Ruim:**
 ```python
 seq = ("Austin", "New York", "San Francisco")
 
@@ -177,7 +177,7 @@ for item in seq:
     print(item)
 ```
 
-**Good**:
+**Bom**:
 ```python
 locations = ("Austin", "New York", "San Francisco")
 
@@ -190,12 +190,11 @@ for location in locations:
 **[⬆ back to top](#table-of-contents)**
 
 
-### Don't add unneeded context
+### Não adicione contextos desnecessários
 
-If your class/object name tells you something, don't repeat that in your
-variable name.
+Se o nome da sua classe/objeto expressa algo, não repita isso no nome da variável.
 
-**Bad:**
+**Ruim:**
 
 ```python
 class Car:
@@ -204,7 +203,7 @@ class Car:
     car_color: str
 ```
 
-**Good**:
+**Bom**:
 
 ```python
 class Car:
@@ -215,11 +214,11 @@ class Car:
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use default arguments instead of short circuiting or conditionals
+### Use argumentos padrões ao invés de encadear condicionais
 
-**Tricky**
+**Muito ruim**
 
-Why write:
+Porque escrever:
 
 ```python
 import hashlib
@@ -231,10 +230,10 @@ def create_micro_brewery(name):
     # etc.
 ```
 
-... when you can specify a default argument instead? This also makes it clear that
-you are expecting a string as the argument.
+... quando você pode especificar um argumento padrão em vez disso? Isso também deixa claro que
+você está esperando uma string como argumento.
 
-**Good**:
+**Bom**:
 
 ```python
 from typing import Text
