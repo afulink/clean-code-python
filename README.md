@@ -246,18 +246,13 @@ def create_micro_brewery(name: Text = "Hipster Brew Co."):
 ```
 
 **[⬆ back to top](#table-of-contents)**
-## **Functions**
-### Function arguments (2 or fewer ideally)
-Limiting the amount of function parameters is incredibly important because it makes
-testing your function easier. Having more than three leads to a combinatorial explosion
-where you have to test tons of different cases with each separate argument.
+## **Funções**
+### Argumentos de funções (2 ou menos, idealmente)
+Limitar a quantidade de parametros de uma função é incrivelmente importantante porque isso torna sua função fácil de testar. Ter mais de três de leva em uma explosão onde você tem que testar vários casos diferentes, com argumentos separados.
 
-Zero arguments is the ideal case. One or two arguments is ok, and three should be avoided.
-Anything more than that should be consolidated. Usually, if you have more than two
-arguments then your function is trying to do too much. In cases where it's not, most
-of the time a higher-level object will suffice as an argument.
+Um ou dois argumentos é o caso ideal, e três deve ser evitado se possível. Algo além disso deve ser deixado de lado. Usualmente, se você tem mais de dois argumentos, suas funções estão tentando fazer coisas demais. Nos casos que não estão, na maior parte do tempo um objeto irá ser o suficiente como argumento.
 
-**Bad:**
+**Ruim:**
 ```python
 def create_menu(title, body, button_text, cancellable):
     pass
@@ -281,7 +276,7 @@ menu = Menu(
 )
 ```
 
-**Also good**
+**Muito bom**
 ```python
 from typing import Text
 
@@ -317,7 +312,7 @@ config.cancellable = True
 create_menu(config)
 ```
 
-**Fancy**
+**Chique**
 ```python
 from typing import NamedTuple
 
@@ -351,7 +346,7 @@ create_menu(
 )
 ```
 
-**Even fancier**
+**Ainda mais chique**
 ```python
 from typing import Text
 from dataclasses import astuple, dataclass
@@ -386,7 +381,7 @@ create_menu(
 )
 ```
 
-**Even fancier, Python3.8+ only**
+**Ainda mais chique, versões Python3.8+**
 ```python
 from typing import TypedDict, Text
 
