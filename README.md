@@ -5,8 +5,8 @@
 
 ## Table of Contents
   1. [Introdução](#introducao)
-  2. [Variables](#variables)
-  3. [Functions](#functions)
+  2. [Variáveis](#variables)
+  3. [Funções](#functions)
   4. [Objects and Data Structures](#objects-and-data-structures)
   5. [Classes](#classes)
      1. [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
@@ -173,7 +173,7 @@ for item in seq:
     #do_stuff()
     #do_some_other_stuff()
 
-    # Wait, what's `item` again?
+    # Espere, `item` de novo?
     print(item)
 ```
 
@@ -306,7 +306,7 @@ config = MenuConfig()
 config.title = "My delicious menu"
 config.body = "A description of the various items on the menu"
 config.button_text = "Order now!"
-# The instance attribute overrides the default class attribute.
+# O atributo de instância substitui o atributo de classe padrão.
 config.cancellable = True
 
 create_menu(config)
@@ -407,7 +407,7 @@ def create_menu(config: MenuConfig):
 
 
 create_menu(
-    # You need to supply all the parameters
+    # Você precisa informar todos os parâmetros
     MenuConfig(
         title="My delicious menu",
         body="A description of the various items on the menu",
