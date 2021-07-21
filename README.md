@@ -418,14 +418,10 @@ create_menu(
 ```
 **[⬆ back to top](#table-of-contents)**
 
-### Functions should do one thing
-This is by far the most important rule in software engineering. When functions do more
-than one thing, they are harder to compose, test, and reason about. When you can isolate
-a function to just one action, they can be refactored easily and your code will read much
-cleaner. If you take nothing else away from this guide other than this, you'll be ahead
-of many developers.
+### Funções devem fazer somente uma coisa
+Esta é, de longe, a regra mais importante da engenharia de software. Quando funções fazem mais de uma coisa, elas são mais difíceis de compor, testar e pensar sobre. Quando você consegue isolar a função para apenas uma ação, elas podem ser refatoradas fácilmente e seu código será fácilmente lido. Se você ignorar todo o resto deste guia além dessa dica, você já estará a frente de vários outros desenvolvedores.
 
-**Bad:**
+**Ruim:**
 ```python
 from typing import List
 
@@ -446,7 +442,7 @@ def email_clients(clients: List[Client]) -> None:
             email(client)
 ```
 
-**Good**:
+**Bom**:
 ```python
 from typing import List
 
@@ -472,9 +468,9 @@ def email_clients(clients: List[Client]) -> None:
         email(client)
 ```
 
-Do you see an opportunity for using generators now?
+Você vê uma oportunidade para usar geradores agora?
 
-**Even better**
+**Melhor ainda**
 ```python
 from typing import Generator, Iterator
 
@@ -502,9 +498,9 @@ def email_client(clients: Iterator[Client]) -> None:
 
 **[⬆ back to top](#table-of-contents)**
 
-### Function names should say what they do
+### Nomes das funções devem dizer o que elas fazem
 
-**Bad:**
+**Ruim:**
 
 ```python
 class Email:
@@ -512,11 +508,11 @@ class Email:
         pass
 
 message = Email()
-# What is this supposed to do again?
+# O que isso quer dizer?
 message.handle()
 ```
 
-**Good:**
+**Bom:**
 
 ```python
 class Email:
@@ -529,12 +525,11 @@ message.send()
 
 **[⬆ back to top](#table-of-contents)**
 
-### Functions should only be one level of abstraction
+### Funções devem estar em apenas um nível de abstração
 
-When you have more than one level of abstraction, your function is usually doing too
-much. Splitting up functions leads to reusability and easier testing.
+Quando você tem mais de um nível de abstração possívelmente sua função está fazendo coisa demais. Dividir suas funções desencadeia em código reusável e fácil de testar.
 
-**Bad:**
+**Ruim:**
 
 ```python
 # type: ignore
@@ -558,7 +553,7 @@ def parse_better_js_alternative(code: str) -> None:
         pass
 ```
 
-**Good:**
+**Bom:**
 
 ```python
 from typing import Tuple, List, Text, Dict
@@ -597,13 +592,13 @@ def parse(tokens: List) -> List:
 
 **[⬆ back to top](#table-of-contents)**
 
-### Don't use flags as function parameters
+### Não use sinalizadores como parâmetros de função
 
-Flags tell your user that this function does more than one thing. Functions
-should do one thing. Split your functions if they are following different code
-paths based on a boolean.
+Os sinalizadores informam ao usuário que esta função faz mais de uma coisa. Funções
+deve fazer uma coisa. Divida suas funções se elas estiverem seguindo um código diferente
+caminhos baseados em verdadeiro ou falso.
 
-**Bad:**
+**Ruim:**
 
 ```python
 from typing import Text
@@ -618,7 +613,7 @@ def create_file(name: Text, temp: bool) -> None:
         Path(name).touch()
 ```
 
-**Good:**
+**Bom:**
 
 ```python
 from typing import Text
@@ -636,52 +631,50 @@ def create_temp_file(name: Text) -> None:
 
 **[⬆ back to top](#table-of-contents)**
 
-### Avoid side effects
+### Evite efeitos colaterais
 
-A function produces a side effect if it does anything other than take a value in
-and return another value or values. For example, a side effect could be writing
-to a file, modifying some global variable, or accidentally wiring all your money
-to a stranger.
+Uma função produz um efeito colateral se fizer qualquer coisa além de assumir um valor ao invés de retornar outro valor ou valores. Por exemplo, um efeito colateral pode ser a escrita
+a um arquivo, modificando alguma variável global ou transferindo acidentalmente todo o seu dinheiro
+para um estranho.
 
-Now, you do need to have side effects in a program on occasion - for example, like
-in the previous example, you might need to write to a file. In these cases, you
-should centralize and indicate where you are incorporating side effects. Don't have
-several functions and classes that write to a particular file - rather, have one
-(and only one) service that does it.
+No entanto, você precisa ter efeitos colaterais em um programa de vez em quando - por exemplo, como
+no exemplo anterior, você pode precisar gravar em um arquivo. Nestes casos, você
+deve centralizar e indicar onde você está incorporando efeitos colaterais. Não tem
+várias funções e classes que gravam em um arquivo específico - em vez disso, têm um
+(e apenas um) serviço que o faz.
 
-The main point is to avoid common pitfalls like sharing state between objects
-without any structure, using mutable data types that can be written to by anything,
-or using an instance of a class, and not centralizing where your side effects occur.
-If you can do this, you will be happier than the vast majority of other programmers.
+O ponto principal é evitar armadilhas comuns, como o compartilhamento de estado entre objetos
+sem qualquer estrutura, usando tipos de dados mutáveis ​​que podem ser gravados por qualquer coisa ou usando uma instância de uma classe, e não centralizando onde ocorrem seus efeitos colaterais.
+Se você puder fazer isso, ficará mais feliz do que a grande maioria dos outros programadores.
 
-**Bad:**
+**Ruim:**
 
 ```python
 # type: ignore
 
-# This is a module-level name.
-# It's good practice to define these as immutable values, such as a string.
-# However...
+# Este é um nome de nível de módulo..
+# É uma boa prática defini-los como valores imutáveis, como uma string.
+# No entanto...
 fullname = "Ryan McDermott"
 
 def split_into_first_and_last_name() -> None:
-    # The use of the global keyword here is changing the meaning of the
-    # the following line. This function is now mutating the module-level
-    # state and introducing a side-effect!
+    # O uso da palavra-chave global aqui está mudando o significado da
+    # seguinte linha. Esta função agora está alterando o nível do módulo
+    # estado e introduzindo um efeito colateral!
     global fullname
     fullname = fullname.split()
 
 split_into_first_and_last_name()
 
-# MyPy will spot the problem, complaining about 'Incompatible types in
+# MyPy irá detectar o problema,  'Incompatible types in
 # assignment: (expression has type "List[str]", variable has type "str")'
 print(fullname)  # ["Ryan", "McDermott"]
 
-# OK. It worked the first time, but what will happen if we call the
-# function again?
+# OK. Funcionou da primeira vez, mas o que acontecerá se chamarmos de
+# funcionar de novo?
 ```
 
-**Good:**
+**Bom:**
 ```python
 from typing import List, AnyStr
 
@@ -695,7 +688,7 @@ name, surname = split_into_first_and_last_name(fullname)
 print(name, surname)  # => Ryan McDermott
 ```
 
-**Also good**
+**Muito bom**
 ```python
 from typing import Text
 from dataclasses import dataclass
@@ -710,7 +703,7 @@ class Person:
         return self.name.split()
 
 
-# The reason why we create instances of classes is to manage state!
+# A razão pela qual criamos instâncias de classes é para gerenciar o estado!
 person = Person("Ryan McDermott")
 print(person.name)  # => "Ryan McDermott"
 print(person.name_as_first_and_last)  # => ["Ryan", "McDermott"]
