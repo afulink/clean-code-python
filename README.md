@@ -707,7 +707,7 @@ print(person.name_as_first_and_last)  # => ["Ryan", "McDermott"]
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Objects and Data Structures**
+## **Objetos e Estruturas de Dados**
 
 *Coming soon*
 
@@ -715,41 +715,30 @@ print(person.name_as_first_and_last)  # => ["Ryan", "McDermott"]
 
 ## **Classes**
 
-### **Single Responsibility Principle (SRP)**
-### **Open/Closed Principle (OCP)**
-### **Liskov Substitution Principle (LSP)**
-### **Interface Segregation Principle (ISP)**
-### **Dependency Inversion Principle (DIP)**
+### **Princípio da Responsabilidade Única (SRP)**
+### **Princípio do Aberto/Fechado (OCP)**
+### **Princípio de Substituição de Liskov (LSP)**
+### **Princípio da Segregação de Interface (ISP)**
+### **Princípio da Inversão de Dependência (DIP)**
 
 *Coming soon*
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Don't repeat yourself (DRY)**
+## **Não se repita (DRY)**
 
-Try to observe the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principle.
+Mais informações sobre o príncipio [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
-Do your absolute best to avoid duplicate code. Duplicate code is bad because
-it means that there's more than one place to alter something if you need to
-change some logic.
+Como programador, você deve evitar código duplicado. A duplicação é ruim porque isso significa
+que há mais de um lugar para alterar algo, se precisar mudar alguma lógica
 
-Imagine if you run a restaurant and you keep track of your inventory: all your
-tomatoes, onions, garlic, spices, etc. If you have multiple lists that
-you keep this on, then all have to be updated when you serve a dish with
-tomatoes in them. If you only have one list, there's only one place to update!
+Imagine que você é dono de um restaurante e você toma conta do seu estoque: todos os seus tomates, cebolas, alhos, temperos, etc. Se você tem multiplas listas onde guarda estas informações, então você terá que atualizar todas elas quando servir um prato que tenha tomates. Se você tivesse apenas uma lista, teria apenas um lugar para atualizar!
 
-Often you have duplicate code because you have two or more slightly
-different things, that share a lot in common, but their differences force you
-to have two or more separate functions that do much of the same things. Removing
-duplicate code means creating an abstraction that can handle this set of different
-things with just one function/module/class.
+Frequentemente, você possui código duplicado porque você tem duas ou mais coisas levemente diferentes, que possuem muito em comum, mas suas diferenças lhe forçam a ter mais duas ou três funções que fazem muito das mesmas coisas. Remover código duplicado significa criar uma abstração que seja capaz de lidar com este conjunto de coisas diferentes com apenas uma função/módulo/classe.
 
-Getting the abstraction right is critical. Bad abstractions can be
-worse than duplicate code, so be careful! Having said this, if you can make
-a good abstraction, do it! Don't repeat yourself, otherwise you'll find yourself
-updating multiple places any time you want to change one thing.
+Conseguir a abstração correta é crítico, por isso que você deveria seguir os princípios SOLID descritos na seção Classes. Abstrações ruins podem ser piores do que código duplicado, então tome cuidado! Dito isto, se você puder fazer uma boa abstração, faça-a! Não repita a si mesmo, caso contrário você se pegará atualizando muitos lugares toda vez que precisar mudar qualquer coisinha.
 
-**Bad:**
+**Ruim:**
 
 ```python
 from typing import List, Text, Dict
@@ -817,7 +806,7 @@ company_managers = [
 company_managers_list = get_manager_list(managers=company_managers)
 ```
 
-**Good:**
+**Bom:**
 
 ```python
 from typing import List, Text, Dict
