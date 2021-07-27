@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/zedr/clean-code-python.svg?branch=master)](https://travis-ci.com/zedr/clean-code-python)
 [![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.3/)
 
-## Table of Contents
+## Índice
   1. [Introdução](#introducao)
   2. [Variáveis](#variables)
   3. [Funções](#functions)
@@ -92,7 +92,7 @@ class User:
 
 ### Use nomes fáceis de pesquisar
 Nós vamos ler mais código do que escrever, por isso é importante que o código que escrevemos seja legível e fácil de achar. Ao *não* nomear variáveis, prejudicamos nossos leitores.
-Torne seus nomes fáceis de achar
+Torne seus nomes fáceis de procurar.
 
 **Ruim:**
 ```python
@@ -128,9 +128,7 @@ if matches:
     print(f"{matches[1]}: {matches[2]}")
 ```
 
-**Nada mal**:
-
-É melhor, mas ainda dependemos muito do regex.
+**Nada mal**: É melhor, mas ainda dependemos muito do regex.
 
 ```python
 import re
@@ -145,9 +143,7 @@ if matches:
     print(f"{city}: {zip_code}")
 ```
 
-**Bom**:
-
-Diminua a dependência de regex nomeando as variáveis em subgrupo
+**Bom**: Diminua a dependência de regex nomeando as variáveis em subgrupo
 ```python
 import re
 
@@ -419,7 +415,7 @@ create_menu(
 **[⬆ back to top](#table-of-contents)**
 
 ### Funções devem fazer somente uma coisa
-Esta é, de longe, a regra mais importante da engenharia de software. Quando funções fazem mais de uma coisa, elas são mais difíceis de compor, testar e pensar sobre. Quando você consegue isolar a função para apenas uma ação, elas podem ser refatoradas fácilmente e seu código será fácilmente lido. Se você ignorar todo o resto deste guia além dessa dica, você já estará a frente de vários outros desenvolvedores.
+Esta é, de longe, a regra mais importante da engenharia de software. Quando as funções fazem mais de uma coisa, elas são mais difíceis de compor, testar e pensar sobre. Quando você consegue isolar a função para apenas uma ação, elas podem ser refatoradas sem muita dificuldade e seu código será fácilmente lido. Se você não tirar mais nada deste guia além disso, você estará à frente de muitos programadores.
 
 **Ruim:**
 ```python
