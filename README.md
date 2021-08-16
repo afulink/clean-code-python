@@ -3,38 +3,35 @@
 [![Build Status](https://travis-ci.com/zedr/clean-code-python.svg?branch=master)](https://travis-ci.com/zedr/clean-code-python)
 [![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.3/)
 
-## Table of Contents
-  1. [Introduction](#introduction)
-  2. [Variables](#variables)
-  3. [Functions](#functions)
-  4. [Objects and Data Structures](#objects-and-data-structures)
+## Índice
+  1. [Introdução](#introdução)
+  2. [Variáveis](#variáveis)
+  3. [Funções](#funções)
+  4. [Objects and Data Structures](#objetos-e-estruturas-de-dados)
   5. [Classes](#classes)
-     1. [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
-     2. [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
-     3. [L: Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
-     4. [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
-     5. [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
-  6. [Don't repeat yourself (DRY)](#dont-repeat-yourself-dry)
+     1. [S: Princípio da Responsabilidade Única (SRP)](#princípio-da-responsabilidade-Única-srp)
+     2. [O: Princípio do Aberto/Fechado (OCP)](#princípio-do-abertofechado-ocp)
+     3. [L: Princípio de Substituição de Liskov (LSP)](#princípio-de-substituição-de-liskov-lsp)
+     4. [I: Princípio da Segregação de Interface (ISP)](#princípio-da-segregação-de-interface-isp)
+     5. [D: Princípio da Inversão de Dependência (DIP)](#princípio-da-inversão-de-dependência-dip)
+  6. [Não se repita (DRY)](#não-se-repita-dry)
 
-## Introduction
+## Introdução
 
-Software engineering principles, from Robert C. Martin's book
-[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for Python. This is not a style guide. It's a guide to producing
-readable, reusable, and refactorable software in Python.
+Principios da engenharia de software, do livro de Robert C. Martin
+[*Código Limpo*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
+adaptados para Python. Isto não é um style guide. É um guia para desenvolver software legível, reutilizavel e refatorável em Python.
 
-Not every principle herein has to be strictly followed, and even fewer will be universally
-agreed upon. These are guidelines and nothing more, but they are ones codified over many
-years of collective experience by the authors of *Clean Code*.
+Nem todos principios contidos aqui tem de ser seguidos estritamente, e muito menos irão ser universalmente aprovados. Estes são apenas guias e nada mais, mas que foram codificados durante muito anos por experiências coletivas dos autores de *Código Limpo*.
 
-Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
+Inspriado em [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
 
-Targets Python3.7+
+Versão Python3.7+
 
-## **Variables**
-### Use meaningful and pronounceable variable names
+## **Variáveis**
+### Use nomes significantes e pronunciáveis em suas variáveis
 
-**Bad:**
+**Ruim:**
 ```python
 import datetime
 
@@ -42,36 +39,35 @@ import datetime
 ymdstr = datetime.date.today().strftime("%y-%m-%d")
 ```
 
-**Good**:
+**Bom**:
 ```python
 import datetime
 
 
 current_date: str = datetime.date.today().strftime("%y-%m-%d")
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Use the same vocabulary for the same type of variable
+### Use o mesmo vocabulário para o mesmo tipo de variável
 
-**Bad:**
-Here we use three different names for the same underlying entity:
+**Ruim:**
+Usamos três nomes diferentes para a mesma entidade:
 ```python
 def get_user_info(): pass
 def get_client_data(): pass
 def get_customer_record(): pass
 ```
 
-**Good**:
-If the entity is the same, you should be consistent in referring to it in your functions:
+**Bom**:
+Se a entidade for a mesma, você deve ser consistente ao se referir a ela em suas funções:
 ```python
 def get_user_info(): pass
 def get_user_data(): pass
 def get_user_record(): pass
 ```
 
-**Even better**
-Python is (also) an object oriented programming language. If it makes sense, package the functions together with the concrete implementation
-of the entity in your code, as instance attributes, property methods, or methods:
+**Melhor ainda**:
+Python é (também) uma linguagem de programação orientada a objetos. Se fizer sentido, empacote as funções junto com a implementação concreta da entidade em seu código, como atributos de instância, métodos ou métodos de propriedade:
 
 ```python
 from typing import Union, Dict, Text
@@ -92,36 +88,34 @@ class User:
         return Record()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Use searchable names
-We will read more code than we will ever write. It's important that the code we do write is
-readable and searchable. By *not* naming variables that end up being meaningful for
-understanding our program, we hurt our readers.
-Make your names searchable.
+### Use nomes fáceis de pesquisar
+Nós vamos ler mais código do que escrever, por isso é importante que o código que escrevemos seja legível e fácil de achar. Ao *não* nomear variáveis, prejudicamos nossos leitores.
+Torne seus nomes fáceis de procurar.
 
-**Bad:**
+**Ruim:**
 ```python
 import time
 
 
-# What is the number 86400 for again?
+# Para que é o número 86400?
 time.sleep(86400)
 ```
 
-**Good**:
+**Bom**:
 ```python
 import time
 
 
-# Declare them in the global namespace for the module.
+# Declare-os no namespace global do módulo.
 SECONDS_IN_A_DAY = 60 * 60 * 24
 time.sleep(SECONDS_IN_A_DAY)
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Use explanatory variables
-**Bad:**
+### Use variáveis explicativas
+**Ruim:**
 ```python
 import re
 
@@ -134,9 +128,7 @@ if matches:
     print(f"{matches[1]}: {matches[2]}")
 ```
 
-**Not bad**:
-
-It's better, but we are still heavily dependent on regex.
+**Nada mal**: É melhor, mas ainda dependemos muito do regex.
 
 ```python
 import re
@@ -151,9 +143,7 @@ if matches:
     print(f"{city}: {zip_code}")
 ```
 
-**Good**:
-
-Decrease dependence on regex by naming subpatterns.
+**Bom**: Diminua a dependência de regex nomeando as variáveis em subgrupo
 ```python
 import re
 
@@ -165,13 +155,13 @@ matches = re.match(city_zip_code_regex, address)
 if matches:
     print(f"{matches['city']}, {matches['zip_code']}")
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Avoid Mental Mapping
-Don’t force the reader of your code to translate what the variable means.
-Explicit is better than implicit.
+### Evite mapear mentalmente
+Não force o leitor do seu código a traduzir o que a variável significa.
+Explicito é melhor que implito.
 
-**Bad:**
+**Ruim:**
 ```python
 seq = ("Austin", "New York", "San Francisco")
 
@@ -179,11 +169,11 @@ for item in seq:
     #do_stuff()
     #do_some_other_stuff()
 
-    # Wait, what's `item` again?
+    # Espere, `item` de novo?
     print(item)
 ```
 
-**Good**:
+**Bom**:
 ```python
 locations = ("Austin", "New York", "San Francisco")
 
@@ -193,15 +183,14 @@ for location in locations:
     # ...
     print(location)
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 
-### Don't add unneeded context
+### Não adicione contextos desnecessários
 
-If your class/object name tells you something, don't repeat that in your
-variable name.
+Se o nome da sua classe/objeto expressa algo, não repita isso no nome da variável.
 
-**Bad:**
+**Ruim:**
 
 ```python
 class Car:
@@ -210,7 +199,7 @@ class Car:
     car_color: str
 ```
 
-**Good**:
+**Bom**:
 
 ```python
 class Car:
@@ -219,13 +208,13 @@ class Car:
     color: str
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Use default arguments instead of short circuiting or conditionals
+### Use argumentos padrões ao invés de encadear condicionais
 
-**Tricky**
+**Muito ruim**
 
-Why write:
+Porque escrever:
 
 ```python
 import hashlib
@@ -237,10 +226,10 @@ def create_micro_brewery(name):
     # etc.
 ```
 
-... when you can specify a default argument instead? This also makes it clear that
-you are expecting a string as the argument.
+... quando você pode especificar um argumento padrão em vez disso? Isso também deixa claro que
+você está esperando uma string como argumento.
 
-**Good**:
+**Bom**:
 
 ```python
 from typing import Text
@@ -252,19 +241,14 @@ def create_micro_brewery(name: Text = "Hipster Brew Co."):
     # etc.
 ```
 
-**[⬆ back to top](#table-of-contents)**
-## **Functions**
-### Function arguments (2 or fewer ideally)
-Limiting the amount of function parameters is incredibly important because it makes
-testing your function easier. Having more than three leads to a combinatorial explosion
-where you have to test tons of different cases with each separate argument.
+**[⬆ back to top](#índice)**
+## **Funções**
+### Argumentos de funções (2 ou menos, idealmente)
+Limitar a quantidade de parametros de uma função é incrivelmente importantante porque isso torna sua função fácil de testar. Ter mais de três de leva em uma explosão onde você tem que testar vários casos diferentes, com argumentos separados.
 
-Zero arguments is the ideal case. One or two arguments is ok, and three should be avoided.
-Anything more than that should be consolidated. Usually, if you have more than two
-arguments then your function is trying to do too much. In cases where it's not, most
-of the time a higher-level object will suffice as an argument.
+Um ou dois argumentos é o caso ideal, e três deve ser evitado se possível. Algo além disso deve ser deixado de lado. Usualmente, se você tem mais de dois argumentos, suas funções estão tentando fazer coisas demais. Nos casos que não estão, na maior parte do tempo um objeto irá ser o suficiente como argumento.
 
-**Bad:**
+**Ruim:**
 ```python
 def create_menu(title, body, button_text, cancellable):
     pass
@@ -288,7 +272,7 @@ menu = Menu(
 )
 ```
 
-**Also good**
+**Muito bom**
 ```python
 from typing import Text
 
@@ -318,13 +302,13 @@ config = MenuConfig()
 config.title = "My delicious menu"
 config.body = "A description of the various items on the menu"
 config.button_text = "Order now!"
-# The instance attribute overrides the default class attribute.
+# O atributo de instância substitui o atributo de classe padrão.
 config.cancellable = True
 
 create_menu(config)
 ```
 
-**Fancy**
+**Chique**
 ```python
 from typing import NamedTuple
 
@@ -358,7 +342,7 @@ create_menu(
 )
 ```
 
-**Even fancier**
+**Ainda mais chique**
 ```python
 from typing import Text
 from dataclasses import astuple, dataclass
@@ -393,7 +377,7 @@ create_menu(
 )
 ```
 
-**Even fancier, Python3.8+ only**
+**Ainda mais chique, versões Python3.8+**
 ```python
 from typing import TypedDict, Text
 
@@ -419,7 +403,7 @@ def create_menu(config: MenuConfig):
 
 
 create_menu(
-    # You need to supply all the parameters
+    # Você precisa informar todos os parâmetros
     MenuConfig(
         title="My delicious menu",
         body="A description of the various items on the menu",
@@ -428,16 +412,12 @@ create_menu(
     )
 )
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Functions should do one thing
-This is by far the most important rule in software engineering. When functions do more
-than one thing, they are harder to compose, test, and reason about. When you can isolate
-a function to just one action, they can be refactored easily and your code will read much
-cleaner. If you take nothing else away from this guide other than this, you'll be ahead
-of many developers.
+### Funções devem fazer somente uma coisa
+Esta é, de longe, a regra mais importante da engenharia de software. Quando as funções fazem mais de uma coisa, elas são mais difíceis de compor, testar e pensar sobre. Quando você consegue isolar a função para apenas uma ação, elas podem ser refatoradas sem muita dificuldade e seu código será fácilmente lido. Se você não tirar mais nada deste guia além disso, você estará à frente de muitos programadores.
 
-**Bad:**
+**Ruim:**
 ```python
 from typing import List
 
@@ -458,7 +438,7 @@ def email_clients(clients: List[Client]) -> None:
             email(client)
 ```
 
-**Good**:
+**Bom**:
 ```python
 from typing import List
 
@@ -484,9 +464,9 @@ def email_clients(clients: List[Client]) -> None:
         email(client)
 ```
 
-Do you see an opportunity for using generators now?
+Você vê uma oportunidade para usar geradores agora?
 
-**Even better**
+**Melhor ainda**
 ```python
 from typing import Generator, Iterator
 
@@ -512,11 +492,11 @@ def email_client(clients: Iterator[Client]) -> None:
 ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Function names should say what they do
+### Nomes das funções devem dizer o que elas fazem
 
-**Bad:**
+**Ruim:**
 
 ```python
 class Email:
@@ -524,11 +504,11 @@ class Email:
         pass
 
 message = Email()
-# What is this supposed to do again?
+# O que isso quer dizer?
 message.handle()
 ```
 
-**Good:**
+**Bom:**
 
 ```python
 class Email:
@@ -539,14 +519,13 @@ message = Email()
 message.send()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Functions should only be one level of abstraction
+### Funções devem estar em apenas um nível de abstração
 
-When you have more than one level of abstraction, your function is usually doing too
-much. Splitting up functions leads to reusability and easier testing.
+Quando você tem mais de um nível de abstração possívelmente sua função está fazendo coisa demais. Dividir suas funções desencadeia em código reusável e fácil de testar.
 
-**Bad:**
+**Ruim:**
 
 ```python
 # type: ignore
@@ -570,7 +549,7 @@ def parse_better_js_alternative(code: str) -> None:
         pass
 ```
 
-**Good:**
+**Bom:**
 
 ```python
 from typing import Tuple, List, Text, Dict
@@ -607,15 +586,15 @@ def parse(tokens: List) -> List:
     return syntax_tree
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Don't use flags as function parameters
+### Não use sinalizadores como parâmetros de função
 
-Flags tell your user that this function does more than one thing. Functions
-should do one thing. Split your functions if they are following different code
-paths based on a boolean.
+Os sinalizadores informam ao usuário que esta função faz mais de uma coisa. Funções
+deve fazer uma coisa. Divida suas funções se elas estiverem seguindo um código diferente
+caminhos baseados em verdadeiro ou falso.
 
-**Bad:**
+**Ruim:**
 
 ```python
 from typing import Text
@@ -630,7 +609,7 @@ def create_file(name: Text, temp: bool) -> None:
         Path(name).touch()
 ```
 
-**Good:**
+**Bom:**
 
 ```python
 from typing import Text
@@ -646,54 +625,52 @@ def create_temp_file(name: Text) -> None:
     (Path(gettempdir()) / name).touch()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-### Avoid side effects
+### Evite efeitos colaterais
 
-A function produces a side effect if it does anything other than take a value in
-and return another value or values. For example, a side effect could be writing
-to a file, modifying some global variable, or accidentally wiring all your money
-to a stranger.
+Uma função produz um efeito colateral se fizer qualquer coisa além de assumir um valor ao invés de retornar outro valor ou valores. Por exemplo, um efeito colateral pode ser a escrita
+a um arquivo, modificando alguma variável global ou transferindo acidentalmente todo o seu dinheiro
+para um estranho.
 
-Now, you do need to have side effects in a program on occasion - for example, like
-in the previous example, you might need to write to a file. In these cases, you
-should centralize and indicate where you are incorporating side effects. Don't have
-several functions and classes that write to a particular file - rather, have one
-(and only one) service that does it.
+No entanto, você precisa ter efeitos colaterais em um programa de vez em quando - por exemplo, como
+no exemplo anterior, você pode precisar gravar em um arquivo. Nestes casos, você
+deve centralizar e indicar onde você está incorporando efeitos colaterais. Não tem
+várias funções e classes que gravam em um arquivo específico - em vez disso, têm um
+(e apenas um) serviço que o faz.
 
-The main point is to avoid common pitfalls like sharing state between objects
-without any structure, using mutable data types that can be written to by anything,
-or using an instance of a class, and not centralizing where your side effects occur.
-If you can do this, you will be happier than the vast majority of other programmers.
+O ponto principal é evitar armadilhas comuns, como o compartilhamento de estado entre objetos
+sem qualquer estrutura, usando tipos de dados mutáveis ​​que podem ser gravados por qualquer coisa ou usando uma instância de uma classe, e não centralizando onde ocorrem seus efeitos colaterais.
+Se você puder fazer isso, ficará mais feliz do que a grande maioria dos outros programadores.
 
-**Bad:**
+**Ruim:**
 
 ```python
 # type: ignore
 
-# This is a module-level name.
-# It's good practice to define these as immutable values, such as a string.
-# However...
+# Este é um nome de nível de módulo..
+# É uma boa prática defini-los como valores imutáveis, como uma string.
+# No entanto...
 fullname = "Ryan McDermott"
 
 def split_into_first_and_last_name() -> None:
-    # The use of the global keyword here is changing the meaning of the
-    # the following line. This function is now mutating the module-level
-    # state and introducing a side-effect!
+    # O uso da palavra-chave global aqui está mudando o significado da
+    # seguinte linha. Esta função agora está alterando o nível do módulo
+    # estado e introduzindo um efeito colateral!
     global fullname
     fullname = fullname.split()
 
 split_into_first_and_last_name()
 
-# MyPy will spot the problem, complaining about 'Incompatible types in
+# MyPy irá detectar o problema,  'Incompatible types in
 # assignment: (expression has type "List[str]", variable has type "str")'
 print(fullname)  # ["Ryan", "McDermott"]
 
-# OK. It worked the first time, but what will happen if we call the
-# function again?
+# OK. Funcionou da primeira vez, mas o que acontecerá se chamarmos de
+# funcionar de novo?
 ```
 
-**Good:**
+**Bom:**
 ```python
 from typing import List, AnyStr
 
@@ -707,7 +684,7 @@ name, surname = split_into_first_and_last_name(fullname)
 print(name, surname)  # => Ryan McDermott
 ```
 
-**Also good**
+**Muito bom**
 ```python
 from typing import Text
 from dataclasses import dataclass
@@ -722,57 +699,46 @@ class Person:
         return self.name.split()
 
 
-# The reason why we create instances of classes is to manage state!
+# A razão pela qual criamos instâncias de classes é para gerenciar o estado!
 person = Person("Ryan McDermott")
 print(person.name)  # => "Ryan McDermott"
 print(person.name_as_first_and_last)  # => ["Ryan", "McDermott"]
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-## **Objects and Data Structures**
+## **Objetos e Estruturas de Dados**
 
 *Coming soon*
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ## **Classes**
 
-### **Single Responsibility Principle (SRP)**
-### **Open/Closed Principle (OCP)**
-### **Liskov Substitution Principle (LSP)**
-### **Interface Segregation Principle (ISP)**
-### **Dependency Inversion Principle (DIP)**
+### **Princípio da Responsabilidade Única (SRP)**
+### **Princípio do Aberto/Fechado (OCP)**
+### **Princípio de Substituição de Liskov (LSP)**
+### **Princípio da Segregação de Interface (ISP)**
+### **Princípio da Inversão de Dependência (DIP)**
 
 *Coming soon*
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
-## **Don't repeat yourself (DRY)**
+## **Não se repita (DRY)**
 
-Try to observe the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principle.
+Mais informações sobre o príncipio [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
-Do your absolute best to avoid duplicate code. Duplicate code is bad because
-it means that there's more than one place to alter something if you need to
-change some logic.
+Como programador, você deve evitar código duplicado. A duplicação é ruim porque isso significa
+que há mais de um lugar para alterar algo, se precisar mudar alguma lógica
 
-Imagine if you run a restaurant and you keep track of your inventory: all your
-tomatoes, onions, garlic, spices, etc. If you have multiple lists that
-you keep this on, then all have to be updated when you serve a dish with
-tomatoes in them. If you only have one list, there's only one place to update!
+Imagine que você é dono de um restaurante e você toma conta do seu estoque: todos os seus tomates, cebolas, alhos, temperos, etc. Se você tem multiplas listas onde guarda estas informações, então você terá que atualizar todas elas quando servir um prato que tenha tomates. Se você tivesse apenas uma lista, teria apenas um lugar para atualizar!
 
-Often you have duplicate code because you have two or more slightly
-different things, that share a lot in common, but their differences force you
-to have two or more separate functions that do much of the same things. Removing
-duplicate code means creating an abstraction that can handle this set of different
-things with just one function/module/class.
+Frequentemente, você possui código duplicado porque você tem duas ou mais coisas levemente diferentes, que possuem muito em comum, mas suas diferenças lhe forçam a ter mais duas ou três funções que fazem muito das mesmas coisas. Remover código duplicado significa criar uma abstração que seja capaz de lidar com este conjunto de coisas diferentes com apenas uma função/módulo/classe.
 
-Getting the abstraction right is critical. Bad abstractions can be
-worse than duplicate code, so be careful! Having said this, if you can make
-a good abstraction, do it! Don't repeat yourself, otherwise you'll find yourself
-updating multiple places any time you want to change one thing.
+Conseguir a abstração correta é crítico, por isso que você deveria seguir os princípios SOLID descritos na seção Classes. Abstrações ruins podem ser piores do que código duplicado, então tome cuidado! Dito isto, se você puder fazer uma boa abstração, faça-a! Não repita a si mesmo, caso contrário você se pegará atualizando muitos lugares toda vez que precisar mudar qualquer coisinha.
 
-**Bad:**
+**Ruim:**
 
 ```python
 from typing import List, Text, Dict
@@ -840,7 +806,7 @@ company_managers = [
 company_managers_list = get_manager_list(managers=company_managers)
 ```
 
-**Good:**
+**Bom:**
 
 ```python
 from typing import List, Text, Dict
@@ -888,5 +854,5 @@ company_managers_list = get_employee_list(employees=company_managers)
 
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
