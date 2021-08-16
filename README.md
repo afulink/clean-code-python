@@ -2,19 +2,24 @@
 
 [![Build Status](https://travis-ci.com/zedr/clean-code-python.svg?branch=master)](https://travis-ci.com/zedr/clean-code-python)
 [![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.3/)
+### **Princípio da Responsabilidade Única (SRP)**
+### **Princípio do Aberto/Fechado (OCP)**
+### **Princípio de Substituição de Liskov (LSP)**
+### **Princípio da Segregação de Interface (ISP)**
+### **Princípio da Inversão de Dependência (DIP)**
 
 ## Índice
   1. [Introdução](#introdução)
-  2. [Variáveis](#variables)
-  3. [Funções](#functions)
-  4. [Objects and Data Structures](#objects-and-data-structures)
+  2. [Variáveis](#variáveis)
+  3. [Funções](#funções)
+  4. [Objects and Data Structures](#objetos-e-estruturas-de-dados)
   5. [Classes](#classes)
-     1. [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
-     2. [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
-     3. [L: Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
-     4. [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
-     5. [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
-  6. [Don't repeat yourself (DRY)](#dont-repeat-yourself-dry)
+     1. [S: Princípio da Responsabilidade Única (SRP)](#princípio-da-responsabilidade-Única-srp)
+     2. [O: Princípio do Aberto/Fechado (OCP)](#princípio-do-aberto/fechado-ocp)
+     3. [L: Princípio de Substituição de Liskov (LSP)](#princípio-de-substituição-de-liskov-lsp)
+     4. [I: Princípio da Segregação de Interface (ISP)](#princípio-da-segregação-de-interface-isp)
+     5. [D: Princípio da Inversão de Dependência (DIP)](#princípio-da-inversão-de-dependência-dip)
+  6. [Não se repita (DRY)](#não-se-repita)
 
 ## Introdução
 
