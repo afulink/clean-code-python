@@ -46,7 +46,7 @@ import datetime
 
 current_date: str = datetime.date.today().strftime("%y-%m-%d")
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Use o mesmo vocabulário para o mesmo tipo de variável
 
@@ -88,7 +88,7 @@ class User:
         return Record()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Use nomes fáceis de pesquisar
 Nós vamos ler mais código do que escrever, por isso é importante que o código que escrevemos seja legível e fácil de achar. Ao *não* nomear variáveis, prejudicamos nossos leitores.
@@ -112,7 +112,7 @@ import time
 SECONDS_IN_A_DAY = 60 * 60 * 24
 time.sleep(SECONDS_IN_A_DAY)
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Use variáveis explicativas
 **Ruim:**
@@ -155,7 +155,7 @@ matches = re.match(city_zip_code_regex, address)
 if matches:
     print(f"{matches['city']}, {matches['zip_code']}")
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Evite mapear mentalmente
 Não force o leitor do seu código a traduzir o que a variável significa.
@@ -183,7 +183,7 @@ for location in locations:
     # ...
     print(location)
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 
 ### Não adicione contextos desnecessários
@@ -208,7 +208,7 @@ class Car:
     color: str
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Use argumentos padrões ao invés de encadear condicionais
 
@@ -241,7 +241,7 @@ def create_micro_brewery(name: Text = "Hipster Brew Co."):
     # etc.
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 ## **Funções**
 ### Argumentos de funções (2 ou menos, idealmente)
 Limitar a quantidade de parametros de uma função é incrivelmente importantante porque isso torna sua função fácil de testar. Ter mais de três de leva em uma explosão onde você tem que testar vários casos diferentes, com argumentos separados.
@@ -412,7 +412,7 @@ create_menu(
     )
 )
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Funções devem fazer somente uma coisa
 Esta é, de longe, a regra mais importante da engenharia de software. Quando as funções fazem mais de uma coisa, elas são mais difíceis de compor, testar e pensar sobre. Quando você consegue isolar a função para apenas uma ação, elas podem ser refatoradas sem muita dificuldade e seu código será fácilmente lido. Se você não tirar mais nada deste guia além disso, você estará à frente de muitos programadores.
@@ -492,7 +492,7 @@ def email_client(clients: Iterator[Client]) -> None:
 ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Nomes das funções devem dizer o que elas fazem
 
@@ -519,7 +519,7 @@ message = Email()
 message.send()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Funções devem estar em apenas um nível de abstração
 
@@ -586,7 +586,7 @@ def parse(tokens: List) -> List:
     return syntax_tree
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Não use sinalizadores como parâmetros de função
 
@@ -625,7 +625,7 @@ def create_temp_file(name: Text) -> None:
     (Path(gettempdir()) / name).touch()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ### Evite efeitos colaterais
 
@@ -705,13 +705,13 @@ print(person.name)  # => "Ryan McDermott"
 print(person.name_as_first_and_last)  # => ["Ryan", "McDermott"]
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ## **Objetos e Estruturas de Dados**
 
 *Coming soon*
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ## **Classes**
 
@@ -723,7 +723,7 @@ print(person.name_as_first_and_last)  # => ["Ryan", "McDermott"]
 
 *Coming soon*
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
 ## **Não se repita (DRY)**
 
@@ -854,5 +854,5 @@ company_managers_list = get_employee_list(employees=company_managers)
 
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#índice)**
 
