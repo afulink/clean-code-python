@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.3/)
 
 ## Índice
-  1. [Introdução](#introducao)
+  1. [Introdução](#introdução)
   2. [Variáveis](#variables)
   3. [Funções](#functions)
   4. [Objects and Data Structures](#objects-and-data-structures)
