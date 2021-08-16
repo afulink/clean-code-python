@@ -2,11 +2,6 @@
 
 [![Build Status](https://travis-ci.com/zedr/clean-code-python.svg?branch=master)](https://travis-ci.com/zedr/clean-code-python)
 [![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.3/)
-### **Princípio da Responsabilidade Única (SRP)**
-### **Princípio do Aberto/Fechado (OCP)**
-### **Princípio de Substituição de Liskov (LSP)**
-### **Princípio da Segregação de Interface (ISP)**
-### **Princípio da Inversão de Dependência (DIP)**
 
 ## Índice
   1. [Introdução](#introdução)
