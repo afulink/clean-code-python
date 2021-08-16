@@ -10,7 +10,7 @@
   4. [Objects and Data Structures](#objetos-e-estruturas-de-dados)
   5. [Classes](#classes)
      1. [S: Princípio da Responsabilidade Única (SRP)](#princípio-da-responsabilidade-Única-srp)
-     2. [O: Princípio do Aberto/Fechado (OCP)](#princípio-do-aberto-fechado-ocp)
+     2. [O: Princípio do Aberto/Fechado (OCP)](#princípio-do-abertofechado-ocp)
      3. [L: Princípio de Substituição de Liskov (LSP)](#princípio-de-substituição-de-liskov-lsp)
      4. [I: Princípio da Segregação de Interface (ISP)](#princípio-da-segregação-de-interface-isp)
      5. [D: Princípio da Inversão de Dependência (DIP)](#princípio-da-inversão-de-dependência-dip)
